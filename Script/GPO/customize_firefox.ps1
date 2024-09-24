@@ -29,7 +29,7 @@ Set-RegistryKey -Path "HKLM:\Software\Policies\Mozilla\Firefox" -Name "DisableTe
 Set-RegistryKey -Path "HKLM:\Software\Policies\Mozilla\Firefox\FirefoxHome" -Name "CustomizeFirefoxHome" -Type "DWord" -Value 0
 
 # Set Search to 0
-Set-RegistryKey -Path "HKLM:\Software\Policies\Mozilla\Firefox\FirefoxHome" -Name "Search" -Type "DWord" -Value 0
+#Set-RegistryKey -Path "HKLM:\Software\Policies\Mozilla\Firefox\FirefoxHome" -Name "Search" -Type "DWord" -Value 0
 
 # Set TopSites to 0
 Set-RegistryKey -Path "HKLM:\Software\Policies\Mozilla\Firefox\FirefoxHome" -Name "TopSites" -Type "DWord" -Value 0
@@ -47,7 +47,13 @@ Set-RegistryKey -Path "HKLM:\Software\Policies\Mozilla\Firefox\FirefoxHome" -Nam
 Set-RegistryKey -Path "HKLM:\Software\Policies\Mozilla\Firefox" -Name "NoDefaultBookmarks" -Type "DWord" -Value 1
 
 # Don't allow settings to be changed
-Set-RegistryKey -Path "HKLM:\Software\Policies\Mozilla\Firefox\FirefoxHome" -Name "Locked" -Type "DWord" -Value 1
+#Set-RegistryKey -Path "HKLM:\Software\Policies\Mozilla\Firefox\FirefoxHome" -Name "Locked" -Type "DWord" -Value 1
+
+# Set DisableDefaultCheck to 1
+Set-RegistryKey -Path "HKLM:\Software\Policies\Mozilla\Firefox" -Name "DisableDefaultCheck" -Type "DWord" -Value 1
+
+# Set DisableRights to 1
+Set-RegistryKey -Path "HKLM:\Software\Policies\Mozilla\Firefox" -Name "DisableRights" -Type "DWord" -Value 1
 
 # Add Extensions
 if (!(Test-Path "HKLM:\SOFTWARE\Policies\Mozilla\Firefox\Extensions\Install")) {
@@ -65,4 +71,5 @@ Write-Host "Group Policy update complete." -ForegroundColor Green
 
 # Pause the script
 Write-Host "Script completed. Press Enter to exit." -ForegroundColor Yellow
-Read-Host -Prompt "Press Enter to continue"
+
+pause
