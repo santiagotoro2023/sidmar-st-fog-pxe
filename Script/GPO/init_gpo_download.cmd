@@ -1,1 +1,0 @@
-powershell -ExecutionPolicy Bypass -File "C:\Script\GPO\GPO_download.ps1"
