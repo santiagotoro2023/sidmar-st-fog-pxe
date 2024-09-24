@@ -1,0 +1,1 @@
+powershell -ExecutionPolicy Bypass -File "C:\Script\basic_configuration.ps1"
