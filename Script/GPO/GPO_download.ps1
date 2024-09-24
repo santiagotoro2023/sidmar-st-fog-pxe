@@ -75,6 +75,9 @@ Copy-Item "$firefoxExtractDir\windows\en-US\mozilla.adml" -Destination $firefoxL
 Write-Host -ForegroundColor Green "ADML files for Firefox (English) successfully copied."
 
 Write-Host "Script completed successfully." -ForegroundColor Green
+
+gpupdate /force
+
 pause
 
 & "C:\Script\GPO\customize_firefox.ps1"
