@@ -1,63 +1,61 @@
+function Set-RegistryKey {
+    param(
+        [string]$Path,
+        [string]$Name,
+        [string]$Type,
+        [int]$Value
+    )
+    
+    if (!(Test-Path $Path)) {
+        Write-Host "Creating path $Path..." -ForegroundColor Yellow
+        New-Item -Path $Path -Force | Out-Null
+    }
+    
+    Write-Host "Setting $Name key in $Path..." -ForegroundColor Yellow
+    New-ItemProperty -Path $Path -Name $Name -Value $Value -PropertyType $Type -Force | Out-Null
+    Write-Host "$Name key successfully set to $Value." -ForegroundColor Green
+}
+
 # Set AppAutoUpdate to 1
-Write-Host "Setting AppAutoUpdate key..." -ForegroundColor Yellow
-Set-ItemProperty -Path "HKLM:\Software\Policies\Mozilla\Firefox" -Name "AppAutoUpdate" -Value 1 -Type DWord -Force
-Write-Host "AppAutoUpdate key successfully set." -ForegroundColor Green
+Set-RegistryKey -Path "HKLM:\Software\Policies\Mozilla\Firefox" -Name "AppAutoUpdate" -Type "DWord" -Value 1
 
 # Set DisablePocket to 1
-Write-Host "Setting DisablePocket key..." -ForegroundColor Yellow
-Set-ItemProperty -Path "HKLM:\Software\Policies\Mozilla\Firefox" -Name "DisablePocket" -Value 1 -Type DWord -Force
-Write-Host "DisablePocket key successfully set." -ForegroundColor Green
+Set-RegistryKey -Path "HKLM:\Software\Policies\Mozilla\Firefox" -Name "DisablePocket" -Type "DWord" -Value 1
 
 # Set DisableTelemetry to 1
-#Write-Host "Setting DisableTelemetry key..." -ForegroundColor Yellow
-#Set-ItemProperty -Path "HKLM:\Software\Policies\Mozilla\Firefox" -Name "DisableTelemetry" -Value 1 -Type DWord -Force
-#Write-Host "DisableTelemetry key successfully set." -ForegroundColor Green
+Set-RegistryKey -Path "HKLM:\Software\Policies\Mozilla\Firefox" -Name "DisableTelemetry" -Type "DWord" -Value 1
 
 # Set Customize Firefox Home to 0
-#Write-Host "Setting CustomizeFirefoxHome key..." -ForegroundColor Yellow
-#New-Item -Path "HKLM:\Software\Policies\Mozilla\Firefox\FirefoxHome" -Force | Out-Null
-#Set-ItemProperty -Path "HKLM:\Software\Policies\Mozilla\Firefox\FirefoxHome" -Name "CustomizeFirefoxHome" -Value 0 -Type DWord -Force
-#Write-Host "CustomizeFirefoxHome key successfully set." -ForegroundColor Green
+Set-RegistryKey -Path "HKLM:\Software\Policies\Mozilla\Firefox\FirefoxHome" -Name "CustomizeFirefoxHome" -Type "DWord" -Value 0
 
-## Set Search to 0
-#Write-Host "Setting Search key..." -ForegroundColor Yellow
-#Set-ItemProperty -Path "HKLM:\Software\Policies\Mozilla\Firefox\FirefoxHome" -Name "Search" -Value 0 -Type DWord -Force
-#Write-Host "Search key successfully set." -ForegroundColor Green
+# Set Search to 0
+Set-RegistryKey -Path "HKLM:\Software\Policies\Mozilla\Firefox\FirefoxHome" -Name "Search" -Type "DWord" -Value 0
 
 # Set TopSites to 0
-Write-Host "Setting TopSites key..." -ForegroundColor Yellow
-Set-ItemProperty -Path "HKLM:\Software\Policies\Mozilla\Firefox\FirefoxHome" -Name "TopSites" -Value 0 -Type DWord -Force
-Write-Host "TopSites key successfully set." -ForegroundColor Green
+Set-RegistryKey -Path "HKLM:\Software\Policies\Mozilla\Firefox\FirefoxHome" -Name "TopSites" -Type "DWord" -Value 0
 
 # Set Highlights to 0
-Write-Host "Setting Highlights key..." -ForegroundColor Yellow
-Set-ItemProperty -Path "HKLM:\Software\Policies\Mozilla\Firefox\FirefoxHome" -Name "Highlights" -Value 0 -Type DWord -Force
-Write-Host "Highlights key successfully set." -ForegroundColor Green
+Set-RegistryKey -Path "HKLM:\Software\Policies\Mozilla\Firefox\FirefoxHome" -Name "Highlights" -Type "DWord" -Value 0
 
 # Set Pocket to 0
-Write-Host "Setting Pocket key..." -ForegroundColor Yellow
-Set-ItemProperty -Path "HKLM:\Software\Policies\Mozilla\Firefox\FirefoxHome" -Name "Pocket" -Value 0 -Type DWord -Force
-Write-Host "Pocket key successfully set." -ForegroundColor Green
+Set-RegistryKey -Path "HKLM:\Software\Policies\Mozilla\Firefox\FirefoxHome" -Name "Pocket" -Type "DWord" -Value 0
 
 # Set Snippets to 0
-Write-Host "Setting Snippets key..." -ForegroundColor Yellow
-Set-ItemProperty -Path "HKLM:\Software\Policies\Mozilla\Firefox\FirefoxHome" -Name "Snippets" -Value 0 -Type DWord -Force
-Write-Host "Snippets key successfully set." -ForegroundColor Green
+Set-RegistryKey -Path "HKLM:\Software\Policies\Mozilla\Firefox\FirefoxHome" -Name "Snippets" -Type "DWord" -Value 0
 
 # Set NoDefaultBookmarks to 1
-Write-Host "Setting NoDefaultBookmarks key..." -ForegroundColor Yellow
-Set-ItemProperty -Path "HKLM:\Software\Policies\Mozilla\Firefox" -Name "NoDefaultBookmarks" -Value 1 -Type DWord -Force
-Write-Host "NoDefaultBookmarks key successfully set." -ForegroundColor Green
+Set-RegistryKey -Path "HKLM:\Software\Policies\Mozilla\Firefox" -Name "NoDefaultBookmarks" -Type "DWord" -Value 1
 
 # Don't allow settings to be changed
-#Write-Host "Setting Locked key..." -ForegroundColor Yellow
-#Set-ItemProperty -Path "HKLM:\Software\Policies\Mozilla\Firefox\FirefoxHome" -Name "Locked" -Value 1 -Type DWord -Force
-#Write-Host "Locked key successfully set." -ForegroundColor Green
+Set-RegistryKey -Path "HKLM:\Software\Policies\Mozilla\Firefox\FirefoxHome" -Name "Locked" -Type "DWord" -Value 1
 
 # Add Extensions
+if (!(Test-Path "HKLM:\SOFTWARE\Policies\Mozilla\Firefox\Extensions\Install")) {
+    Write-Host "Creating path HKLM:\SOFTWARE\Policies\Mozilla\Firefox\Extensions\Install..." -ForegroundColor Yellow
+    New-Item -Path "HKLM:\SOFTWARE\Policies\Mozilla\Firefox\Extensions\Install" -Force | Out-Null
+}
 Write-Host "Setting Extensions key..." -ForegroundColor Yellow
-New-Item -Path "HKLM:\SOFTWARE\Policies\Mozilla\Firefox\Extensions\Install" -Force | Out-Null
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Mozilla\Firefox\Extensions\Install" -Name "1" -Value "https://addons.mozilla.org/firefox/downloads/file/4237670/ublock_origin-1.56.0.xpi" -Type ExpandString -Force
+New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Mozilla\Firefox\Extensions\Install" -Name "1" -Value "https://addons.mozilla.org/firefox/downloads/file/4237670/ublock_origin-1.56.0.xpi" -PropertyType "ExpandString" -Force | Out-Null
 Write-Host "Extensions key successfully set." -ForegroundColor Green
 
 # Force Group Policy Update
