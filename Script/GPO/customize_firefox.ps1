@@ -55,6 +55,9 @@ Set-RegistryKey -Path "HKLM:\Software\Policies\Mozilla\Firefox" -Name "DisableDe
 # Set DisableRights to 1
 Set-RegistryKey -Path "HKLM:\Software\Policies\Mozilla\Firefox" -Name "DisableRights" -Type "DWord" -Value 1
 
+#Set SupressUpdatePage to 1
+Set-RegistryKey -Path "HKLM:\Software\Policies\Mozilla\Firefox" -Name "SupressUpdatePage" -Type "DWord" -Value 1
+
 # Add Extensions
 if (!(Test-Path "HKLM:\SOFTWARE\Policies\Mozilla\Firefox\Extensions\Install")) {
     Write-Host "Creating path HKLM:\SOFTWARE\Policies\Mozilla\Firefox\Extensions\Install..." -ForegroundColor Yellow
