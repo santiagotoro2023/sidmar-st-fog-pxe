@@ -49,7 +49,7 @@ try {
 
 
 
-#ST Script zum anpassen der Taskleiste für alle Benutzer.
+#ST Script zum anpassen der Taskleiste fï¿½r alle Benutzer.
 $provisioningFolder = "$env:ProgramData\Microsoft\Windows\Taskbar"
 $provisioningFile = "$provisioningFolder\taskbar_layout.xml"
 
@@ -110,7 +110,7 @@ Write-Host -ForegroundColor Green "Successfully pinned Applications to taskbar f
 
 
 
-#ST Script zum anpassen von Registry Keys für die Taskbar
+#ST Script zum anpassen von Registry Keys fï¿½r die Taskbar
 $widgetsPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
 $searchPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search"
 $taskbarPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
@@ -127,7 +127,7 @@ try {
     pause
 }
 
-#ST Script zum löschen von Microsoft Edge Shortcut
+#ST Script zum lï¿½schen von Microsoft Edge Shortcut
 try {
     Write-Host -ForegroundColor Yellow "Deleting Microsoft Edge Desktop Shortcut..."
     $desktopPath = [System.Environment]::GetFolderPath('Desktop')
@@ -157,7 +157,7 @@ try {
     pause 
 }
 
-#ST Script zum löschen von der aufgabe
+#ST Script zum lï¿½schen von der aufgabe
 try {
     Write-Host -ForegroundColor Yellow "Deleting Init User Script scheduled Task..."
     $task = Get-ScheduledTask -TaskName 'InitUserScript' -ErrorAction Stop

@@ -51,7 +51,7 @@ try {
 
 
 
-#ST Script zum ändern des Hostnames
+#ST Script zum ï¿½ndern des Hostnames
 function Get-ValidHostname {
     while ($true) {
         $hostname = Read-Host -Prompt 'Enter new Hostname (Leave blank to skip)'
@@ -77,16 +77,10 @@ try {
     pause
 }
 
-
-
-$adminGroup = "Administratoren"
-$userGroup = "Benutzer"
-
 $newUser = "SIDMAR"
-$password = "1234"
 $passwordPlainText = "1234"
 
-#ST Script für autologon.
+#ST Script fï¿½r autologon.
 $registryPath = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"
 try {
     Write-Host -ForegroundColor Yellow "Setting autologon for '$newUser'..."
@@ -101,8 +95,7 @@ try {
     pause
 }
 
-#ST Script für OOBE Einstellungen.
-$newUserProfile = "C:\Users\$newUser"
+#ST Script fï¿½r OOBE Einstellungen.
 $oobePath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE"
 try {
     Write-Host -ForegroundColor Yellow "Setting OOBE Settings for '$newUser'..."
@@ -137,7 +130,7 @@ try {
 
 
 
-#ST Script zum anpassen der Taskleiste für alle Benutzer.
+#ST Script zum anpassen der Taskleiste fï¿½r alle Benutzer.
 $provisioningFolder = "$env:ProgramData\Microsoft\Windows\Taskbar"
 $provisioningFile = "$provisioningFolder\taskbar_layout.xml"
 
@@ -195,7 +188,7 @@ try {
 Write-Host -ForegroundColor Green "Successfully pinned Applications to taskbar for all users. Reboot required to see effects."
 
 
-#ST Script zum anpassen von Registry Keys für die Taskbar
+#ST Script zum anpassen von Registry Keys fï¿½r die Taskbar
 $widgetsPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
 $searchPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search"
 $taskbarPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
@@ -248,7 +241,7 @@ try {
 }
 
 
-#Script um die InitBasics Aufgabe zu löschen (Damit sie sich nicht wiederholt)
+#Script um die InitBasics Aufgabe zu lï¿½schen (Damit sie sich nicht wiederholt)
 try {
     Write-Host -ForegroundColor Yellow "Deleting Init Basics scheduled Task..."
     $task = Get-ScheduledTask -TaskName 'InitBasics' -ErrorAction Stop
