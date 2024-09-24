@@ -1,1 +1,0 @@
-powershell -ExecutionPolicy Bypass -File "C:\Script\new_user_configuration.ps1"

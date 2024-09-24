@@ -1,1 +1,0 @@
-powershell -ExecutionPolicy Bypass -File "C:\Script\Installations\install_gdata.ps1"
