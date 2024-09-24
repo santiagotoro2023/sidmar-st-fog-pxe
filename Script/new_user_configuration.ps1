@@ -30,7 +30,7 @@ try {
 #Set-ExecutionPolicy Restricted -Force -- Auskommentiert weil in init.cmd schon ExecutionPolicy auf Bypass gesetzt wird.
 try {
     Write-Host -ForegroundColor Yellow "Retrieving Windows Updates..."
-    #Get-WindowsUpdate -- Auskommentiert zu testing Zwecken.
+    Get-WindowsUpdate
     Write-Host -ForegroundColor Green "Successfully retrieved Windows Updates."
 } catch {
     Write-Host -ForegroundColor Red "Failed to retrieve or verify Windows Updates: $_"
@@ -39,7 +39,7 @@ try {
 }
 try {
     Write-Host -ForegroundColor Yellow "Installing Windows Updates..."
-    #Install-WindowsUpdate -MicrosoftUpdate -AcceptAll -AutoReboot  -- Auskommentiert zu testing Zwecken.
+    Install-WindowsUpdate -MicrosoftUpdate -AcceptAll -AutoReboot
     Write-Host -ForegroundColor Green "Successfully installed Windows Updates."
 } catch {
     Write-Host -ForegroundColor Red "Failed to install or verify Windows Updates: $_"
