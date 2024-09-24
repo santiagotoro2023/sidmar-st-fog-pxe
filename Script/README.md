@@ -5,4 +5,4 @@ Der Benutzer wird nach GDATA und Fastviewer Installationswunsch abgefragt.
 Die Taskleiste wird angepasst. 
 
 
-#DIESER BRANCH IST ZU TESTING ZWECKEN! ES WERDEN KEINE UPDATES DURCHGEFÜHRT!
+# DIESER BRANCH IST ZU TESTING ZWECKEN! ES WERDEN KEINE UPDATES DURCHGEFÜHRT!
