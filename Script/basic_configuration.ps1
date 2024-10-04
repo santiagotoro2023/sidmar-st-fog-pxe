@@ -6,7 +6,6 @@ try {
 } catch {
     Write-Host -ForegroundColor Red "Failed to install or verify NuGet provider: $_"
     pause
-    exit
 }
 #Set-ExecutionPolicy RemoteSigned -Force -- Auskommentiert weil in init.cmd schon ExecutionPolicy auf Bypass gesetzt wird.
 try {
@@ -16,7 +15,6 @@ try {
 } catch {
     Write-Host -ForegroundColor Red "Failed to install or verify PSWindowsUpdate Module: $_"
     pause
-    exit
 }
 try {
     Write-Host -ForegroundColor Yellow "Importing PSWindowsUpdate Module..."
@@ -25,7 +23,6 @@ try {
 } catch {
     Write-Host -ForegroundColor Red "Failed to install or verify import of PSWindowsUpdate Module: $_"
     pause
-    exit
 }
 #Set-ExecutionPolicy Restricted -Force -- Auskommentiert weil in init.cmd schon ExecutionPolicy auf Bypass gesetzt wird.
 try {
@@ -35,16 +32,14 @@ try {
 } catch {
     Write-Host -ForegroundColor Red "Failed to retrieve or verify Windows Updates: $_"
     pause
-    exit
 }
 try {
     Write-Host -ForegroundColor Yellow "Installing Windows Updates..."
-    Install-WindowsUpdate -MicrosoftUpdate -AcceptAll -AutoReboot
+    Install-WindowsUpdate -MicrosoftUpdate -AcceptAll
     Write-Host -ForegroundColor Green "Successfully installed Windows Updates."
 } catch {
     Write-Host -ForegroundColor Red "Failed to install or verify Windows Updates: $_"
     pause
-    exit
 }
 
 
